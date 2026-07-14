@@ -2,43 +2,35 @@
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Forchetect%2Fswift-unit-interval%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/orchetect/swift-unit-interval) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Forchetect%2Fswift-unit-interval%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/orchetect/swift-unit-interval) [![License: MIT](http://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat)](https://github.com/orchetect/swift-unit-interval/blob/main/LICENSE)
 
-Provides `UnitInterval` and `SignedUnitInterval` types
+Provides `UnitInterval` and `SignedUnitInterval` types for Swift.
 
 These types are designed to work with floating-point unit interval values (`0.0 ... 1.0`) and their signed counterpart (`-1.0 ... 1.0`).
 
-## Installation
+## Getting Started
 
-### Swift Package Manager (SPM)
+This library is available as a Swift Package Manager (SPM) package.
 
-To add this package to an Xcode app project, use:
+1. Add the **swift-unit-interval** repo as a dependency.
 
- `https://github.com/orchetect/swift-unit-interval` as the URL.
+   ```swift
+   .package(url: "https://github.com/orchetect/swift-unit-interval", from: "1.0.0")
+   ```
 
-To add this package to a Swift package, add the dependency to your package and target in Package.swift:
+2. Add **SwiftUnitInterval** to your target.
 
-```swift
-let package = Package(
-    dependencies: [
-        .package(url: "https://github.com/orchetect/swift-unit-interval", from: "1.0.0")
-    ],
-    targets: [
-        .target(
-            dependencies: [
-                .product(name: "SwiftUnitInterval", package: "swift-unit-interval")
-            ]
-        )
-    ]
-)
-```
+   ```swift
+   .product(name: "SwiftUnitInterval", package: "swift-unit-interval")
+   ```
 
-Import the library:
-```swift
-import SwiftUnitInterval
-```
+3. Import **SwiftUnitInterval** to use it.
+
+   ```swift
+   import SwiftUnitInterval
+   ```
 
 ## Documentation
 
-No separate documentation is provided at this time. This README serves as a getting started guide, covering most of the core features of the library.
+See the [online documentation](https://swiftpackageindex.com/orchetect/swift-unit-interval/documentation) for library usage
 
 ## Author
 
