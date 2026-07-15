@@ -39,6 +39,7 @@ extension UnitInterval.ScaleType: Sendable { }
 
 extension UnitInterval {
     /// Scales a unit interval (`0.0 ... 1.0`) to a particular curve function.
+    @inlinable
     nonisolated
     public func scaled(using scaleType: ScaleType) -> Double {
         switch scaleType {

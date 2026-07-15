@@ -8,6 +8,7 @@
 
 extension BinaryInteger {
     /// Initialize from a unit interval raw value.
+    @inlinable
     nonisolated
     public init(_ unitInterval: UnitInterval) {
         self.init(unitInterval.rawValue)
@@ -16,6 +17,7 @@ extension BinaryInteger {
 
 extension BinaryFloatingPoint {
     /// Initialize from a unit interval raw value.
+    @inlinable
     nonisolated
     public init(_ unitInterval: UnitInterval) {
         self.init(unitInterval.rawValue)

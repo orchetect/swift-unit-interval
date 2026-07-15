@@ -11,26 +11,28 @@ public struct UnitInterval {
     public let rawValue: Double
 
     /// Construct by clamping.
+    @inlinable
     nonisolated
     public init(_ rawValue: Double) {
         self.rawValue = rawValue.clamped(to: Self.range)
     }
 
     /// Construct by clamping.
-    @_disfavoredOverload
+    @_disfavoredOverload @inlinable
     nonisolated
     public init<T: BinaryFloatingPoint>(_ value: T) {
         self.init(Double(value))
     }
 
     /// Construct by clamping.
-    @_disfavoredOverload
+    @_disfavoredOverload @inlinable
     nonisolated
     public init<T: BinaryInteger>(_ value: T) {
         self.init(Double(value))
     }
 
     /// Construct by clamping.
+    @inlinable
     nonisolated
     public init?<S>(_ text: S) where S: StringProtocol {
         guard let valueFromText = Double(text) else { return nil }
@@ -39,6 +41,7 @@ public struct UnitInterval {
 }
 
 extension UnitInterval: RawRepresentable {
+    @inlinable
     nonisolated
     public init(rawValue: Double) {
         self.init(rawValue)
@@ -47,7 +50,8 @@ extension UnitInterval: RawRepresentable {
 
 extension UnitInterval: ExpressibleByFloatLiteral {
     public typealias FloatLiteralType = Double
-    
+
+    @inlinable
     nonisolated
     public init(floatLiteral: FloatLiteralType) {
         self.init(floatLiteral)
@@ -55,6 +59,7 @@ extension UnitInterval: ExpressibleByFloatLiteral {
 }
 
 extension UnitInterval: Equatable {
+    @inlinable
     nonisolated
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue == rhs.rawValue
@@ -62,11 +67,13 @@ extension UnitInterval: Equatable {
 }
 
 extension UnitInterval: Comparable {
+    @inlinable
     nonisolated
     public static func < (lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
-    
+
+    @inlinable
     nonisolated
     public static func > (lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue > rhs.rawValue
@@ -80,6 +87,7 @@ extension UnitInterval: Codable { }
 extension UnitInterval: Sendable { }
 
 extension UnitInterval: CustomStringConvertible {
+    @inlinable
     nonisolated
     public var description: String {
         rawValue.description
@@ -97,18 +105,22 @@ extension UnitInterval: CustomDebugStringConvertible {
 
 extension UnitInterval {
     /// Returns the min and max as a range.
+    @inline(always)
     nonisolated
     public static let range: ClosedRange<Double> = 0.0 ... 1.0
 
     /// Returns the minimum value.
+    @inline(always)
     nonisolated
     public static let min: Self = .init(0.0)
 
     /// Returns the mid (center) value between the minimum and maximum value.
+    @inline(always)
     nonisolated
     public static let mid: Self = .init(0.5)
 
     /// Returns the minimum value.
+    @inline(always)
     nonisolated
     public static let max: Self = .init(1.0)
 }
@@ -118,12 +130,14 @@ extension UnitInterval {
 extension UnitInterval {
     /// Returns a signed unit interval constructed from the unit interval with either positive or
     /// negative polarity.
+    @inlinable
     nonisolated
     public func signedUnitInterval(sign: FloatingPointSign) -> SignedUnitInterval {
         SignedUnitInterval(sign == .plus ? rawValue : -rawValue)
     }
 
     /// Returns a signed unit interval constructed by scaling the unit interval linearly.
+    @inlinable
     nonisolated
     public var scaledSignedUnitInterval: SignedUnitInterval {
         SignedUnitInterval(scaling: self)
@@ -172,6 +186,7 @@ extension UnitInterval {
 
 extension UnitInterval {
     /// Convert a signed unit interval to a unit interval by scalings its value linearly.
+    @inlinable
     nonisolated
     public init(scaling signedUnitInterval: SignedUnitInterval) {
         let converted = (signedUnitInterval.rawValue + 1.0) / 2.0
