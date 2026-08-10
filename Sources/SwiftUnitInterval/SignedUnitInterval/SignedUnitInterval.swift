@@ -103,22 +103,22 @@ extension SignedUnitInterval: CustomDebugStringConvertible {
 
 extension SignedUnitInterval {
     /// Returns the min and max as a range.
-    @inline(always)
+    @inline(__always)
     nonisolated
     public static let range: ClosedRange<Double> = -1.0 ... 1.0
 
     /// Returns the minimum value.
-    @inline(always)
+    @inline(__always)
     nonisolated
     public static let min: Self = .init(-1.0)
 
     /// Returns the mid (center) value between the minimum and maximum value.
-    @inline(always)
+    @inline(__always)
     nonisolated
     public static let mid: Self = .init(0.0)
 
     /// Returns the minimum value.
-    @inline(always)
+    @inline(__always)
     nonisolated
     public static let max: Self = .init(1.0)
 }
